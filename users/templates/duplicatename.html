@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Username Already Used</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .message-box {
+            background: white;
+            padding: 40px;
+            width: 400px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .message-box h2 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+
+        .message-box p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="message-box">
+        <h2>Username Already Used!</h2>
+
+        <p>
+            This username is already registered.
+            <br>
+            Please try another username.
+        </p>
+        {% if id %}
+            <a href="{% url value id %}" class="btn">
+                Go Back
+            </a>
+        {% else %}
+            <a href="{% url value %}" class="btn">
+                Go Back
+            </a>
+        {% endif %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XpressGo - Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            background: #faf8ff;
+        }
+
+        .login-card {
+            border: none;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 18px 50px rgba(108, 60, 233, 0.15);
+        }
+
+        /* TOP HEADER */
+        .login-header {
+            background: linear-gradient(135deg, #6c3ce9 0%, #8b4de8 50%, #e44b8d 100%);
+            color: white;
+            padding: 42px 30px;
+        }
+
+        .brand-icon {
+            width: 75px;
+            height: 75px;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: white;
+        }
+
+        .brand {
+            color: white;
+            letter-spacing: 3px;
+            font-size: 34px;
+        }
+
+        .tagline {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .form-control,
+        .form-select,
+        .input-group-text {
+            border-color: #e4ddf5;
+            background-color: #ffffff;
+        }
+
+        .form-control,
+        .form-select {
+            height: 48px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #7c4dff;
+            box-shadow: 0 0 0 0.2rem rgba(124, 77, 255, 0.12);
+        }
+
+        .input-group-text {
+            width: 48px;
+            justify-content: center;
+        }
+
+        .input-icon {
+            color: #7c4dff;
+        }
+
+        /* LOGIN BUTTON */
+        .login-btn {
+            height: 48px;
+            border: none;
+            background: linear-gradient(135deg, #6c3ce9, #e44b8d);
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(135deg, #5b2fd1, #d93678);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(108, 60, 233, 0.25);
+        }
+
+        /* CLEAR BUTTON */
+        .clear-btn {
+            height: 48px;
+            color: #6c3ce9;
+            border-color: #dcd1f5;
+        }
+
+        .clear-btn:hover {
+            background: #f5f0ff;
+            border-color: #cbb9ed;
+            color: #5b2fd1;
+        }
+
+        /* REGISTRATION */
+        .register-link {
+            color: #e44b8d;
+        }
+
+        .register-link:hover {
+            color: #c93673;
+        }
+
+        .footer {
+            background: #fcfaff;
+            color: #8a8497;
+        }
+
+        .footer-icon {
+            color: #e44b8d;
+        }
+
+        .welcome {
+            color: #27212f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center py-5">
+
+        <div class="row w-100 justify-content-center">
+
+            <div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+
+                <div class="card login-card">
+
+                    <!-- TOP HEADER -->
+                    <div class="login-header text-center">
+
+                        <div class="brand-icon rounded-circle d-inline-flex
+                                    justify-content-center align-items-center mb-3">
+
+                            <i class="bi bi-truck fs-1"></i>
+
+                        </div>
+
+                        <h1 class="brand fw-bold mb-2">
+                            XpressGo
+                        </h1>
+
+                        <p class="tagline mb-0">
+                            Fast. Simple. Delivered.
+                        </p>
+
+                    </div>
+
+                    <!-- LOGIN FORM -->
+                    <div class="card-body p-4 p-md-5">
+
+                        <div class="text-center mb-4">
+
+                            <h3 class="welcome fw-bold">
+                                Welcome Back!
+                            </h3>
+
+                            <p class="text-muted mb-0">
+                                Login to continue to your account
+                            </p>
+
+                        </div>
+
+                        <form action="{% url 'loginprocess' %}" method="post">
+
+                            {% csrf_token %}
+
+                            <!-- Username -->
+                            <div class="mb-3">
+
+                                <label for="uname"
+                                       class="form-label fw-semibold">
+                                    Username
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-person input-icon"></i>
+                                    </span>
+
+                                    <input type="text"
+                                           name="uname"
+                                           id="uname"
+                                           class="form-control"
+                                           placeholder="Enter username">
+
+                                </div>
+
+                            </div>
+
+                            <!-- Password -->
+                            <div class="mb-3">
+
+                                <label for="pwt"
+                                       class="form-label fw-semibold">
+                                    Password
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-lock input-icon"></i>
+                                    </span>
+
+                                    <input type="password"
+                                           name="pwt"
+                                           id="pwt"
+                                           class="form-control"
+                                           placeholder="Enter password">
+
+                                </div>
+
+                            </div>
+
+                            <!-- Account Type -->
+                            <div class="mb-4">
+
+                                <label for="acctype"
+                                       class="form-label fw-semibold">
+                                    Account Type
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-person-badge input-icon"></i>
+                                    </span>
+
+                                    <select name="acctype"
+                                            id="acctype"
+                                            class="form-select">
+
+                                        <option value="admin">
+                                            admin
+                                        </option>
+
+                                        <option value="customer" selected>
+                                            customer
+                                        </option>
+
+                                        <option value="driver">
+                                            driver
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="d-flex gap-2">
+
+                                <input type="submit"
+                                       value="login"
+                                       class="btn login-btn text-white w-50 fw-semibold">
+
+                                <input type="reset"
+                                       value="clear"
+                                       class="btn clear-btn w-50 fw-semibold">
+
+                            </div>
+
+                        </form>
+
+                        <!-- Registration -->
+                        <div class="text-center mt-4 pt-4 border-top">
+
+                            <span class="text-muted">
+                                Don't have an account?
+                            </span>
+
+                            <a href="{% url 'registration' %}"
+                               class="register-link fw-bold text-decoration-none ms-1">
+                                Registration
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="footer text-center py-3">
+
+                        <small>
+                            <i class="bi bi-shield-check footer-icon"></i>
+                            Secure XpressGo Logistics
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>XpressGo - Customer Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            background: #faf8ff;
+            color: #292333;
+        }
+
+
+        /* =========================================
+           SIDEBAR
+        ========================================= */
+
+        .sidebar {
+
+            position: fixed;
+
+            left: 15px;
+            top: 15px;
+
+            width: 245px;
+            height: calc(100vh - 30px);
+
+            background: #ffffff;
+
+            border: 1px solid #eee8ff;
+
+            border-radius: 25px;
+
+            padding: 22px 14px;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 12px 40px rgba(108, 60, 233, 0.13),
+                0 3px 10px rgba(0, 0, 0, 0.04);
+        }
+
+
+        /* =========================================
+           LOGO
+        ========================================= */
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 17px 15px;
+
+            margin-bottom: 28px;
+
+            border-radius: 18px;
+
+            color: white;
+
+            background: linear-gradient(
+                135deg,
+                #6c3ce9,
+                #8b4de8,
+                #e44b8d
+            );
+
+            box-shadow:
+                0 8px 22px rgba(108, 60, 233, 0.25);
+        }
+
+
+        .logo-icon {
+
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255,255,255,0.20);
+
+            border: 1px solid rgba(255,255,255,0.35);
+
+            border-radius: 13px;
+
+            font-size: 22px;
+        }
+
+
+        .logo-text {
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================
+           NAV TITLE
+        ========================================= */
+
+        .nav-title {
+
+            color: #9b94a8;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin: 0 10px 12px;
+        }
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+
+        .sidebar a {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            text-decoration: none;
+
+            color: #625b70;
+
+            padding: 12px 13px;
+
+            margin-bottom: 7px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            transition: all 0.3s ease;
+        }
+
+
+        .sidebar a i {
+
+            width: 22px;
+
+            text-align: center;
+
+            font-size: 18px;
+
+            color: #7c4dff;
+
+            transition: 0.3s;
+        }
+
+
+        .sidebar a:hover {
+
+            color: #6c3ce9;
+
+            background: linear-gradient(
+                135deg,
+                #f0eaff,
+                #fff0f6
+            );
+
+            transform: translateX(5px);
+
+            box-shadow:
+                0 5px 15px rgba(108, 60, 233, 0.08);
+        }
+
+
+        .sidebar a:hover i {
+
+            color: #e44b8d;
+
+            transform: scale(1.15);
+        }
+
+
+        /* =========================================
+           LOGOUT
+        ========================================= */
+
+        .sidebar .logout {
+
+            position: absolute;
+
+            bottom: 18px;
+
+            left: 14px;
+
+            right: 14px;
+
+            color: #e44b8d;
+        }
+
+
+        .sidebar .logout i {
+
+            color: #e44b8d;
+        }
+
+
+        .sidebar .logout:hover {
+
+            background: #fff0f6;
+
+            color: #d93678;
+
+            transform: translateX(0);
+        }
+
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        .main {
+
+            margin-left: 275px;
+
+            min-height: 100vh;
+        }
+
+
+        /* =========================================
+           TOP BAR
+        ========================================= */
+
+        .topbar {
+
+            height: 78px;
+
+            margin: 15px 20px 0 0;
+
+            padding: 0 30px;
+
+            border-radius: 18px;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background: linear-gradient(
+                135deg,
+                #6c3ce9,
+                #8b4de8,
+                #e44b8d
+            );
+
+            box-shadow:
+                0 8px 25px rgba(108, 60, 233, 0.16);
+        }
+
+
+        .page-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            font-size: 21px;
+
+            font-weight: bold;
+        }
+
+
+        .page-title i {
+
+            font-size: 25px;
+        }
+
+
+        .customer {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-weight: bold;
+        }
+
+
+        .customer-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: rgba(255,255,255,0.18);
+
+            border: 1px solid rgba(255,255,255,0.4);
+
+            font-size: 19px;
+        }
+
+
+        /* =========================================
+           CONTENT
+        ========================================= */
+
+        .content {
+
+            padding: 30px 30px 50px 20px;
+        }
+
+
+        .section {
+
+            margin-bottom: 38px;
+
+            scroll-margin-top: 110px;
+        }
+
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            color: #6c3ce9;
+
+            margin-bottom: 18px;
+        }
+
+
+        .section-title i {
+
+            color: #e44b8d;
+
+            font-size: 21px;
+        }
+
+
+        /* =========================================
+           DASHBOARD CARDS
+        ========================================= */
+
+        .count-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .count-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: white;
+
+            border: 1px solid #eee8ff;
+
+            border-radius: 17px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 6px 22px rgba(108, 60, 233, 0.07);
+
+            transition: all 0.3s ease;
+        }
+
+
+        .count-card:hover {
+
+            transform: translateY(-6px);
+
+            border-color: #d4c6f5;
+
+            box-shadow:
+                0 15px 35px rgba(108, 60, 233, 0.14);
+        }
+
+
+        .count-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 80px;
+
+            height: 80px;
+
+            border-radius: 50%;
+
+            background: #f1ebff;
+
+            right: -30px;
+
+            top: -30px;
+        }
+
+
+        .card-icon {
+
+            width: 46px;
+
+            height: 46px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 13px;
+
+            color: white;
+
+            background: linear-gradient(
+                135deg,
+                #6c3ce9,
+                #e44b8d
+            );
+
+            font-size: 20px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .count-card h3 {
+
+            color: #8a8497;
+
+            font-size: 13px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .count-card h1 {
+
+            color: #6c3ce9;
+
+            font-size: 32px;
+
+            font-weight: bold;
+
+            margin: 0;
+        }
+
+
+        /* =========================================
+           ORDER FORM
+        ========================================= */
+
+        .form-card {
+
+            background: white;
+
+            border: 1px solid #eee8ff;
+
+            border-radius: 17px;
+
+            padding: 25px;
+
+            max-width: 600px;
+
+            box-shadow:
+                0 6px 22px rgba(108, 60, 233, 0.07);
+        }
+
+
+        label {
+
+            display: block;
+
+            color: #625b70;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            margin: 15px 0 7px;
+        }
+
+
+        input[type="text"],
+        input[type="number"],
+        select {
+
+            width: 100%;
+
+            height: 45px;
+
+            background: white;
+
+            color: #292333;
+
+            border: 1px solid #ded6ef;
+
+            border-radius: 9px;
+
+            padding: 0 12px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+
+            border-color: #7c4dff;
+
+            box-shadow:
+                0 0 0 3px rgba(124, 77, 255, 0.10);
+        }
+
+
+        input:disabled,
+        input:read-only {
+
+            background: #f5f2fa;
+
+            color: #777;
+
+            cursor: not-allowed;
+        }
+
+
+        /* =========================================
+           BUTTONS
+        ========================================= */
+
+        input[type="submit"],
+        input[type="reset"] {
+
+            height: 44px;
+
+            padding: 0 20px;
+
+            margin-top: 20px;
+
+            border-radius: 9px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+        }
+
+
+        input[type="submit"] {
+
+            background: linear-gradient(
+                135deg,
+                #6c3ce9,
+                #e44b8d
+            );
+
+            color: white;
+
+            border: none;
+        }
+
+
+        input[type="submit"]:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(108, 60, 233, 0.23);
+        }
+
+
+        input[type="reset"] {
+
+            background: white;
+
+            color: #6c3ce9;
+
+            border: 1px solid #dcd1f5;
+
+            margin-left: 8px;
+        }
+
+
+        input[type="reset"]:hover {
+
+            background: #f5f0ff;
+
+            border-color: #cbb9ed;
+        }
+
+
+        /* =========================================
+           TABLE
+        ========================================= */
+
+        .table-box {
+
+            width: 100%;
+
+            background: white;
+
+            border: 1px solid #eee8ff;
+
+            border-radius: 17px;
+
+            overflow-x: auto;
+
+            box-shadow:
+                0 6px 22px rgba(108, 60, 233, 0.07);
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 700px;
+        }
+
+
+        th {
+
+            background: linear-gradient(
+                135deg,
+                #6c3ce9,
+                #8b4de8
+            );
+
+            color: white;
+
+            padding: 14px 12px;
+
+            text-align: left;
+
+            font-size: 13px;
+
+            white-space: nowrap;
+        }
+
+
+        td {
+
+            padding: 13px 12px;
+
+            border-bottom: 1px solid #eee8ff;
+
+            color: #625b70;
+
+            font-size: 13px;
+
+            white-space: nowrap;
+        }
+
+
+        tr:hover td {
+
+            background: #faf7ff;
+
+            color: #292333;
+        }
+
+
+        /* =========================================
+           STATUS
+        ========================================= */
+
+        .status-box {
+
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            background: #f0eaff;
+
+            color: #6c3ce9;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 1100px) {
+
+            .count-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 750px) {
+
+            .sidebar {
+
+                width: 210px;
+            }
+
+
+            .main {
+
+                margin-left: 230px;
+            }
+
+
+            .count-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .content {
+
+                padding: 25px 15px;
+            }
+
+
+            .topbar {
+
+                margin-right: 10px;
+
+                padding: 0 20px;
+            }
+
+
+            .page-title {
+
+                font-size: 17px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     LEFT NAVBAR
+========================================= -->
+
+<div class="sidebar">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            <i class="bi bi-truck"></i>
+
+        </div>
+
+        <div class="logo-text">
+
+            XpressGo
+
+        </div>
+
+    </div>
+
+
+    <div class="nav-title">
+
+        Customer Menu
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <a href="#dashboard">
+
+        <i class="bi bi-grid-1x2-fill"></i>
+
+        <span>Dashboard</span>
+
+    </a>
+
+
+    <!-- NEW ORDER -->
+
+    <a href="#ordering">
+
+        <i class="bi bi-box-seam-fill"></i>
+
+        <span>New Order</span>
+
+    </a>
+
+
+    <!-- CURRENT ORDERS -->
+
+    <a href="#currentorder">
+
+        <i class="bi bi-truck-front-fill"></i>
+
+        <span>Current Orders</span>
+
+    </a>
+
+
+    <!-- HISTORY -->
+
+    <a href="#history">
+
+        <i class="bi bi-clock-history"></i>
+
+        <span>Order History</span>
+
+    </a>
+
+
+    <!-- LOGOUT -->
+
+    <a class="logout" href="{% url 'logout' %}">
+
+        <i class="bi bi-box-arrow-right"></i>
+
+        <span>Logout</span>
+
+    </a>
+
+</div>
+
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<div class="main">
+
+
+    <!-- =========================================
+         TOP BAR
+    ========================================= -->
+
+    <div class="topbar">
+
+
+        <div class="page-title">
+
+            <i class="bi bi-speedometer2"></i>
+
+            Customer Dashboard
+
+        </div>
+
+
+        <div class="customer">
+
+            <div class="customer-icon">
+
+                <i class="bi bi-person-fill"></i>
+
+            </div>
+
+            {{customer.username}}
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="content">
+
+
+        <!-- =========================================
+             DASHBOARD
+        ========================================= -->
+
+        <div class="section" id="dashboard">
+
+
+            <div class="section-title">
+
+                <i class="bi bi-bar-chart-fill"></i>
+
+                Dashboard Overview
+
+            </div>
+
+
+            <div class="count-grid">
+
+
+                <div class="count-card">
+
+                    <div class="card-icon">
+
+                        <i class="bi bi-box-seam-fill"></i>
+
+                    </div>
+
+                    <h3>
+                        Order Count
+                    </h3>
+
+                    <h1>
+                        {{ orders_count }}
+                    </h1>
+
+                </div>
+
+
+                <div class="count-card">
+
+                    <div class="card-icon">
+
+                        <i class="bi bi-hourglass-split"></i>
+
+                    </div>
+
+                    <h3>
+                        Order Pending Count
+                    </h3>
+
+                    <h1>
+                        {{ processing }}
+                    </h1>
+
+                </div>
+
+
+                <div class="count-card">
+
+                    <div class="card-icon">
+
+                        <i class="bi bi-person-check-fill"></i>
+
+                    </div>
+
+                    <h3>
+                        Driver Assigned Count
+                    </h3>
+
+                    <h1>
+                        {{ Driver_assigned }}
+                    </h1>
+
+                </div>
+
+
+                <div class="count-card">
+
+                    <div class="card-icon">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                    </div>
+
+                    <h3>
+                        Order Completed Count
+                    </h3>
+
+                    <h1>
+                        {{ completed }}
+                    </h1>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================================
+             NEW ORDER
+        ========================================= -->
+
+        <div class="section" id="ordering">
+
+
+            <div class="section-title">
+
+                <i class="bi bi-box-seam-fill"></i>
+
+                Create New Order
+
+            </div>
+
+
+            <div class="form-card">
+
+
+                <form action="{% url 'ordering' id %}" method="post">
+
+                    {% csrf_token %}
+
+
+                    <label for="uname">
+                        Name:
+                    </label>
+
+                    <input type="text"
+                           name="name"/>
+
+
+
+                    <label for="flocation">
+
+                        From Location:
+
+                    </label>
+
+                    <input type="text"
+                           name="flocation"
+                           value="chennai"
+                           disabled/>
+
+
+
+                    <label for="tlocation">
+
+                        To Location:
+
+                    </label>
+
+
+                    <select name="tlocation">
+
+
+                        {% for x in location %}
+
+
+                        <option value="{{ x.location }}">
+
+                            {{ x.location }}
+
+                        </option>
+
+
+                        {% endfor %}
+
+
+                    </select>
+
+
+
+                    <label for="weight">
+
+                        Weight:
+
+                    </label>
+
+
+                    <input type="number"
+                           name="weight"
+                           min="1"
+                           required/>
+
+
+
+                    <label for="cust_id">
+
+                        Customer ID:
+
+                    </label>
+
+
+                    <input type="number"
+                           name="cust_id"
+                           value="{{ id }}"
+                           readonly/>
+
+
+
+                    <label for="product">
+
+                        Product:
+
+                    </label>
+
+
+                    <input type="text"
+                           name="product"/>
+
+
+
+                    <input type="submit"
+                           value="Order"/>
+
+
+                    <input type="reset"
+                           value="clear"/>
+
+
+                </form>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             CURRENT ORDERS
+        ========================================= -->
+
+        <div class="section" id="currentorder">
+
+
+            <div class="section-title">
+
+                <i class="bi bi-truck-front-fill"></i>
+
+                Current Orders
+
+            </div>
+
+
+            <div class="table-box">
+
+
+                <table width="100%">
+
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Name</th>
+
+                        <th>From Location</th>
+
+                        <th>To Location</th>
+
+                        <th>Customer ID</th>
+
+                        <th>Driver ID</th>
+
+                        <th>Driver name</th>
+
+                        <th>Status</th>
+
+                        <th>Weight</th>
+
+                        <th>Product</th>
+
+                    </tr>
+
+
+                    {% for x in orders %}
+
+
+                        {% if x.customer_id == id %}
+
+
+                            {% if x.status == 'processing' or x.status == 'Driver assigned'%}
+
+
+                                <tr>
+
+                                    <td>
+                                        {{ x.id }}
+                                    </td>
+
+                                    <td>
+                                        {{ x.name }}
+                                    </td>
+
+                                    <td>
+                                        {{ x.from_location }}
+                                    </td>
+
+                                    <td>
+                                        {{ x.to_location }}
+                                    </td>
+
+                                    <td>
+                                        {{ x.customer_id }}
+                                    </td>
+
+                                    <td>
+                                        {{ x.Driver_id }}
+                                    </td>
+
+                                    <td>
+                                        {{ x.Driver_name }}
+                                    </td>
+
+                                    <td>
+                                        {{ x.status }}
+                                    </td>
+
+                                    <td>
+                                        {{ x.weight }}
+                                    </td>
+
+                                    <td>
+                                        {{ x.product }}
+                                    </td>
+
+                                </tr>
+
+
+                            {% endif %}
+
+
+                        {% endif %}
+
+
+                    {% endfor %}
+
+
+                </table>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             ORDER HISTORY
+        ========================================= -->
+
+        <div class="section" id="history">
+
+
+            <div class="section-title">
+
+                <i class="bi bi-clock-history"></i>
+
+                Order History
+
+            </div>
+
+
+            <div class="table-box">
+
+
+                <table width="100%">
+
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Name</th>
+
+                        <th>From Location</th>
+
+                        <th>To Location</th>
+
+                        <th>Customer ID</th>
+
+                        <th>Driver ID</th>
+
+                        <th>Driver name</th>
+
+                        <th>Status</th>
+
+                        <th>Weight</th>
+
+                        <th>Product</th>
+
+                    </tr>
+
+
+                    {% for x in orders %}
+
+
+                        {% if x.customer_id == id and x.status == 'delivered' %}
+
+
+                        <tr>
+
+                            <td>
+                                {{ x.id }}
+                            </td>
+
+                            <td>
+                                {{ x.name }}
+                            </td>
+
+                            <td>
+                                {{ x.from_location }}
+                            </td>
+
+                            <td>
+                                {{ x.to_location }}
+                            </td>
+
+                            <td>
+                                {{ x.customer_id }}
+                            </td>
+
+                            <td>
+                                {{ x.Driver_id }}
+                            </td>
+
+                            <td>
+                                {{ x.Driver_name }}
+                            </td>
+
+                            <td>
+                                {{ x.status }}
+                            </td>
+
+                            <td>
+                                {{ x.weight }}
+                            </td>
+
+                            <td>
+                                {{ x.product }}
+                            </td>
+
+                        </tr>
+
+
+                        {% endif %}
+
+
+                    {% endfor %}
+
+
+                </table>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>
